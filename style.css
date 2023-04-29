@@ -3,8 +3,15 @@
   --light: #727272;
 }
 
+.keyboard__header {
+  font-size: 2rem;
+  text-align: center;
+}
+
 .keyboard {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   background: var(--dark);
+  color: var(--light);
   padding: 30px 100px;
 }
 
@@ -20,8 +27,6 @@
 
 .keyboard__board {
   width: 100%;
-  background: var(--dark);
-  color: var(--light);
 }
 
 .keyboard__key {
@@ -48,4 +53,9 @@
   border-radius: 20px;
   background: var(--light);
   color: var(--dark);
+}
+
+.keyboard__spec {
+  text-align: center;
+  font-size: 1.5rem;
 }
