@@ -99,16 +99,16 @@ const KEYS_ARRAY = [
   },
   {
     eng: '-',
-    ru: '',
+    ru: '-',
     engShifted: '_',
-    ruShifted: '',
+    ruShifted: '_',
     code: 'Minus',
   },
   {
     eng: '=',
-    ru: '',
+    ru: '=',
     engShifted: '+',
-    ruShifted: 'Ё',
+    ruShifted: '+',
     code: 'Equal',
   },
   {
@@ -127,93 +127,93 @@ const KEYS_ARRAY = [
   },
   {
     eng: 'q',
-    ru: '',
+    ru: 'й',
     engShifted: 'Q',
-    ruShifted: '',
+    ruShifted: 'Й',
     code: 'KeyQ',
   },
   {
     eng: 'w',
-    ru: '',
+    ru: 'ц',
     engShifted: 'W',
-    ruShifted: '',
+    ruShifted: 'Ц',
     code: 'KeyW',
   },
   {
     eng: 'e',
-    ru: '',
+    ru: 'у',
     engShifted: 'E',
-    ruShifted: '',
+    ruShifted: 'У',
     code: 'KeyE',
   },
   {
     eng: 'r',
-    ru: '',
+    ru: 'к',
     engShifted: 'R',
-    ruShifted: '',
+    ruShifted: 'К',
     code: 'KeyR',
   },
   {
     eng: 't',
-    ru: '',
+    ru: 'е',
     engShifted: 'T',
-    ruShifted: '',
+    ruShifted: 'Е',
     code: 'KeyT',
   },
   {
     eng: 'y',
-    ru: '',
+    ru: 'н',
     engShifted: 'Y',
-    ruShifted: '',
+    ruShifted: 'Н',
     code: 'KeyY',
   },
   {
     eng: 'u',
-    ru: '',
+    ru: 'г',
     engShifted: 'U',
-    ruShifted: '',
+    ruShifted: 'Г',
     code: 'KeyU',
   },
   {
     eng: 'i',
-    ru: '',
+    ru: 'ш',
     engShifted: 'I',
-    ruShifted: '',
+    ruShifted: 'Ш',
     code: 'KeyI',
   },
   {
     eng: 'o',
-    ru: '',
+    ru: 'щ',
     engShifted: 'O',
-    ruShifted: '',
+    ruShifted: 'Щ',
     code: 'KeyO',
   },
   {
     eng: 'p',
-    ru: '',
+    ru: 'з',
     engShifted: 'P',
-    ruShifted: '',
+    ruShifted: 'З',
     code: 'KeyP',
   },
   {
     eng: '[',
-    ru: '',
+    ru: 'х',
     engShifted: '{',
-    ruShifted: '',
+    ruShifted: 'Х',
     code: 'BracketLeft',
   },
   {
     eng: ']',
-    ru: '',
+    ru: 'ъ',
     engShifted: '}',
-    ruShifted: '',
+    ruShifted: 'Ъ',
     code: 'BracketRight',
   },
   {
     eng: '\\',
-    ru: '',
+    ru: '\\',
     engShifted: '|',
-    ruShifted: '',
+    ruShifted: '/',
     code: 'Backslash',
   },
   {
@@ -225,79 +225,79 @@ const KEYS_ARRAY = [
   },
   {
     eng: 'a',
-    ru: '',
+    ru: 'ф',
     engShifted: 'A',
-    ruShifted: '',
+    ruShifted: 'Ф',
     code: 'KeyA',
   },
   {
     eng: 's',
-    ru: '',
+    ru: 'ы',
     engShifted: 'S',
-    ruShifted: '',
+    ruShifted: 'Ы',
     code: 'KeyS',
   },
   {
     eng: 'd',
-    ru: '',
+    ru: 'в',
     engShifted: 'D',
-    ruShifted: '',
+    ruShifted: 'В',
     code: 'KeyD',
   },
   {
     eng: 'f',
-    ru: '',
+    ru: 'а',
     engShifted: 'F',
-    ruShifted: '',
+    ruShifted: 'А',
     code: 'KeyF',
   },
   {
     eng: 'g',
-    ru: '',
+    ru: 'п',
     engShifted: 'G',
-    ruShifted: '',
+    ruShifted: 'П',
     code: 'KeyG',
   },
   {
     eng: 'h',
-    ru: '',
+    ru: 'р',
     engShifted: 'H',
-    ruShifted: '',
+    ruShifted: 'Р',
     code: 'KeyH',
   },
   {
     eng: 'j',
-    ru: '',
+    ru: 'о',
     engShifted: 'J',
-    ruShifted: '',
+    ruShifted: 'О',
     code: 'KeyJ',
   },
   {
     eng: 'k',
-    ru: '',
+    ru: 'л',
     engShifted: 'K',
-    ruShifted: '',
+    ruShifted: 'Л',
     code: 'KeyK',
   },
   {
     eng: 'l',
-    ru: '',
+    ru: 'д',
     engShifted: 'L',
-    ruShifted: '',
+    ruShifted: 'Д',
     code: 'KeyL',
   },
   {
     eng: ';',
-    ru: '',
+    ru: 'ж',
     engShifted: ':',
-    ruShifted: '',
+    ruShifted: 'Ж',
     code: 'Semicolon',
   },
   {
     eng: '\'',
-    ru: '',
+    ru: 'э',
     engShifted: '"',
-    ruShifted: '',
+    ruShifted: 'Э',
     code: 'Quote',
   },
   {
@@ -316,72 +316,72 @@ const KEYS_ARRAY = [
   },
   {
     eng: 'z',
-    ru: '',
+    ru: 'я',
     engShifted: 'Z',
-    ruShifted: '',
+    ruShifted: 'Я',
     code: 'KeyZ',
   },
   {
     eng: 'x',
-    ru: '',
+    ru: 'ч',
     engShifted: 'X',
-    ruShifted: '',
+    ruShifted: 'Ч',
     code: 'KeyX',
   },
   {
     eng: 'c',
-    ru: '',
+    ru: 'с',
     engShifted: 'C',
-    ruShifted: '',
+    ruShifted: 'С',
     code: 'KeyC',
   },
   {
     eng: 'v',
-    ru: '',
+    ru: 'м',
     engShifted: 'V',
-    ruShifted: '',
+    ruShifted: 'М',
     code: 'KeyV',
   },
   {
     eng: 'b',
-    ru: '',
+    ru: 'и',
     engShifted: 'B',
-    ruShifted: '',
+    ruShifted: 'И',
     code: 'KeyB',
   },
   {
     eng: 'n',
-    ru: '',
+    ru: 'т',
     engShifted: 'N',
-    ruShifted: '',
+    ruShifted: 'Т',
     code: 'KeyN',
   },
   {
     eng: 'm',
-    ru: '',
+    ru: 'ь',
     engShifted: 'M',
-    ruShifted: '',
+    ruShifted: 'Ь',
     code: 'KeyM',
   },
   {
     eng: ',',
-    ru: '',
+    ru: 'б',
     engShifted: '<',
-    ruShifted: '',
+    ruShifted: 'Б',
     code: 'Comma',
   },
   {
     eng: '.',
-    ru: '',
+    ru: 'ю',
     engShifted: '>',
-    ruShifted: '',
+    ruShifted: 'Ю',
     code: 'Period',
   },
   {
     eng: '/',
-    ru: '',
+    ru: '.',
     engShifted: '?',
-    ruShifted: '',
+    ruShifted: ',',
     code: 'Slash',
   },
   {
@@ -420,10 +420,10 @@ const KEYS_ARRAY = [
     code: 'AltLeft',
   },
   {
-    eng: '',
-    ru: '',
-    engShifted: '',
-    ruShifted: '',
+    eng: 'Whitespace',
+    ru: 'Whitespace',
+    engShifted: 'Whitespace',
+    ruShifted: 'Whitespace',
     code: 'Space',
   },
   {
@@ -463,13 +463,20 @@ const KEYS_ARRAY = [
   },
 ];
 
+const BOARD_STATE = {
+  lang: 'ru',
+  isShifted: false,
+};
+
 const appendKeys = () => {
-  const appendLang = (lang, isHidden) => {
+  const appendLang = (type, name, isHidden) => {
     const KEY = document.createElement('span');
     if (isHidden) {
       KEY.classList.add('hidden');
     }
-    KEY.textContent = lang;
+    KEY.classList.add(`keyboard__${name}`);
+    KEY.classList.add('keyboard__key');
+    KEY.textContent = type;
     return KEY;
   };
 
@@ -478,17 +485,39 @@ const appendKeys = () => {
       eng, ru, engShifted, ruShifted, code,
     } = keyObj;
     const KEY_BUTTON = document.createElement('button');
-    KEY_BUTTON.classList.add('keyboard__key');
+    KEY_BUTTON.classList.add('keyboard__button');
+
+    if (code === 'Backspace' || code === 'CapsLock' || code === 'Enter' || code === 'ShiftLeft' || code === 'ShiftRight') {
+      KEY_BUTTON.classList.add('keyboard__button_big');
+    }
+
+    if (code === 'ControlLeft' || code === 'MetaLeft' || code === 'AltLeft' || code === 'AltRight' || code === 'ControlRight') {
+      KEY_BUTTON.classList.add('keyboard__button_middle');
+    }
+
+    if (code === 'Space') {
+      KEY_BUTTON.classList.add('keyboard__button_space');
+    }
+
     KEY_BUTTON.setAttribute('id', code);
     BOARD.append(KEY_BUTTON);
-    const ENG = appendLang(eng, false);
-    const ENG_SHIFTED = appendLang(ru, true);
-    const RU = appendLang(engShifted, true);
-    const RU_SHIFTED = appendLang(ruShifted, true);
-    KEY_BUTTON.append(ENG);
-    KEY_BUTTON.append(RU);
-    KEY_BUTTON.append(ENG_SHIFTED);
-    KEY_BUTTON.append(RU_SHIFTED);
+
+    let engSpan;
+    let ruSpan;
+    const engShiftedSpan = appendLang(engShifted, 'engShifted', true);
+    const ruShiftedSpan = appendLang(ruShifted, 'ruShifted', true);
+
+    if (BOARD_STATE.lang === 'eng') {
+      engSpan = appendLang(eng, 'eng', false);
+      ruSpan = appendLang(ru, 'ru', true);
+    } else {
+      engSpan = appendLang(eng, 'eng', true);
+      ruSpan = appendLang(ru, 'ru', false);
+    }
+    KEY_BUTTON.append(engSpan);
+    KEY_BUTTON.append(ruSpan);
+    KEY_BUTTON.append(engShiftedSpan);
+    KEY_BUTTON.append(ruShiftedSpan);
   });
 };
 
@@ -496,10 +525,18 @@ appendKeys();
 
 document.addEventListener('keydown', (e) => {
   const BOARD_KEY = document.querySelector(`#${e.code}`);
-  BOARD_KEY.classList.add('keyboard__key_active');
+  BOARD_KEY.classList.add('keyboard__button_active');
 });
 
 document.addEventListener('keyup', (e) => {
   const BOARD_KEY = document.querySelector(`#${e.code}`);
-  BOARD_KEY.classList.remove('keyboard__key_active');
+  BOARD_KEY.classList.remove('keyboard__button_active');
+});
+
+BOARD.addEventListener('click', (e) => {
+  const { target } = e;
+  if (target.classList.contains('keyboard__key')) {
+    TEXTAREA.focus();
+    TEXTAREA.value += target.textContent;
+  }
 });
