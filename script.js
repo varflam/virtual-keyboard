@@ -38,63 +38,63 @@ const KEYS_ARRAY = [
     eng: '2',
     ru: '2',
     engShifted: '@',
-    ruShifted: '',
+    ruShifted: '"',
     code: 'Digit2',
   },
   {
     eng: '3',
     ru: '3',
     engShifted: '#',
-    ruShifted: '',
+    ruShifted: '№',
     code: 'Digit3',
   },
   {
     eng: '4',
     ru: '4',
     engShifted: '$',
-    ruShifted: '',
+    ruShifted: ';',
     code: 'Digit4',
   },
   {
     eng: '5',
     ru: '5',
     engShifted: '%',
-    ruShifted: 'Ё',
+    ruShifted: '%',
     code: 'Digit5',
   },
   {
     eng: '6',
     ru: '6',
     engShifted: '^',
-    ruShifted: '',
+    ruShifted: ':',
     code: 'Digit6',
   },
   {
     eng: '7',
     ru: '7',
     engShifted: '&',
-    ruShifted: '',
+    ruShifted: '?',
     code: 'Digit7',
   },
   {
     eng: '8',
     ru: '8',
     engShifted: '*',
-    ruShifted: '',
+    ruShifted: '*',
     code: 'Digit8',
   },
   {
     eng: '9',
     ru: '9',
     engShifted: '(',
-    ruShifted: '',
+    ruShifted: '(',
     code: 'Digit9',
   },
   {
     eng: '0',
     ru: '0',
     engShifted: ')',
-    ruShifted: 'Ё',
+    ruShifted: ')',
     code: 'Digit0',
   },
   {
@@ -463,65 +463,143 @@ const KEYS_ARRAY = [
   },
 ];
 
-const BOARD_STATE = {
-  lang: 'eng',
-  isShifted: false,
-};
+const setShifted = (elems, shiftedElems) => {
+  elems.forEach((shiftedKey) => {
+    shiftedKey.classList.toggle('hidden');
+  });
 
-const appendKeys = () => {
-  const appendLang = (type, name, isHidden) => {
-    const KEY = document.createElement('span');
-    if (isHidden) {
-      KEY.classList.add('hidden');
-    }
-    KEY.classList.add(`keyboard__${name}`);
-    KEY.classList.add('keyboard__key');
-    KEY.textContent = type;
-    return KEY;
-  };
-
-  KEYS_ARRAY.forEach((keyObj) => {
-    const {
-      eng, ru, engShifted, ruShifted, code,
-    } = keyObj;
-    const KEY_BUTTON = document.createElement('button');
-    KEY_BUTTON.classList.add('keyboard__button');
-
-    if (code === 'Backspace' || code === 'CapsLock' || code === 'Enter' || code === 'ShiftLeft' || code === 'ShiftRight') {
-      KEY_BUTTON.classList.add('keyboard__button_big');
-    }
-
-    if (code === 'ControlLeft' || code === 'MetaLeft' || code === 'AltLeft' || code === 'AltRight' || code === 'ControlRight') {
-      KEY_BUTTON.classList.add('keyboard__button_middle');
-    }
-
-    if (code === 'Space') {
-      KEY_BUTTON.classList.add('keyboard__button_space');
-    }
-
-    KEY_BUTTON.setAttribute('id', code);
-    BOARD.append(KEY_BUTTON);
-
-    let engSpan;
-    let ruSpan;
-    const engShiftedSpan = appendLang(engShifted, 'engShifted', true);
-    const ruShiftedSpan = appendLang(ruShifted, 'ruShifted', true);
-
-    if (BOARD_STATE.lang === 'eng') {
-      engSpan = appendLang(eng, 'eng', false);
-      ruSpan = appendLang(ru, 'ru', true);
-    } else {
-      engSpan = appendLang(eng, 'eng', true);
-      ruSpan = appendLang(ru, 'ru', false);
-    }
-    KEY_BUTTON.append(engSpan);
-    KEY_BUTTON.append(ruSpan);
-    KEY_BUTTON.append(engShiftedSpan);
-    KEY_BUTTON.append(ruShiftedSpan);
+  shiftedElems.forEach((key) => {
+    key.classList.toggle('hidden');
   });
 };
 
-appendKeys();
+const BOARD_STATE = {
+  get lang() {
+    return 'eng';
+  },
+  set lang(lang) {
+    this.lang = lang;
+    const KEYBOARD_RU_KEYS = document.querySelectorAll('.keyboard__ru');
+    KEYBOARD_RU_KEYS.forEach((ruKey) => {
+      ruKey.classList.toggle('hidden');
+    });
+
+    const KEYBOARD_ENG_KEYS = document.querySelectorAll('.keyboard__eng');
+    KEYBOARD_ENG_KEYS.forEach((engKey) => {
+      engKey.classList.toggle('hidden');
+    });
+  },
+  get useIsShifted() {
+    return this.isShifted;
+  },
+  set useIsShifted(value) {
+    this.isShifted = value;
+    let KEYBOARD_SHIFTED_KEYS;
+    let KEYBOARD_KEYS;
+    if (this.lang === 'eng') {
+      KEYBOARD_SHIFTED_KEYS = document.querySelectorAll('.keyboard__engShifted');
+      KEYBOARD_KEYS = document.querySelectorAll('.keyboard__eng');
+    } else {
+      KEYBOARD_SHIFTED_KEYS = document.querySelectorAll('.keyboard__ruShifted');
+      KEYBOARD_KEYS = document.querySelectorAll('.keyboard__ru');
+    }
+    setShifted(KEYBOARD_SHIFTED_KEYS, KEYBOARD_KEYS);
+  },
+  get useIsCapsed() {
+    return this.isCapsed;
+  },
+  set useIsCapsed(value) {
+    this.isShifted = value;
+    const KEYBOARD_CAPSED_KEYS = [];
+    const KEYBOARD_KEYS = [];
+    if (this.lang === 'eng') {
+      const KEYBOARD_CAPSED_ALL_KEYS = document.querySelectorAll('.keyboard__engShifted');
+      const KEYBOARD_ALL_KEYS = document.querySelectorAll('.keyboard__eng');
+
+      KEYBOARD_CAPSED_ALL_KEYS.forEach((key) => {
+        if (!key.classList.contains('keyboard__key_num')) {
+          KEYBOARD_CAPSED_KEYS.push(key);
+        }
+      });
+
+      KEYBOARD_ALL_KEYS.forEach((key) => {
+        if (!key.classList.contains('keyboard__key_num')) {
+          KEYBOARD_KEYS.push(key);
+        }
+      });
+    } else {
+      const KEYBOARD_CAPSED_ALL_KEYS = document.querySelectorAll('.keyboard__ruShifted');
+      const KEYBOARD_ALL_KEYS = document.querySelectorAll('.keyboard__ru');
+
+      KEYBOARD_CAPSED_ALL_KEYS.forEach((key) => {
+        if (!key.classList.contains('keyboard__key_num')) {
+          KEYBOARD_CAPSED_KEYS.push(key);
+        }
+      });
+
+      KEYBOARD_ALL_KEYS.forEach((key) => {
+        if (!key.classList.contains('keyboard__key_num')) {
+          KEYBOARD_KEYS.push(key);
+        }
+      });
+    }
+    setShifted(KEYBOARD_CAPSED_KEYS, KEYBOARD_KEYS);
+  },
+};
+
+const appendLang = (type, name, isHidden) => {
+  const KEY = document.createElement('span');
+  if (isHidden) {
+    KEY.classList.add('hidden');
+  }
+  KEY.classList.add(`keyboard__${name}`);
+  KEY.classList.add('keyboard__key');
+  if (!Number.isNaN(+type)) {
+    KEY.classList.add('keyboard__key_num');
+  }
+  KEY.textContent = type;
+  return KEY;
+};
+
+KEYS_ARRAY.forEach((keyObj) => {
+  const {
+    eng, ru, engShifted, ruShifted, code,
+  } = keyObj;
+  const KEY_BUTTON = document.createElement('button');
+  KEY_BUTTON.classList.add('keyboard__button');
+
+  if (code === 'Backspace' || code === 'CapsLock' || code === 'Enter' || code === 'ShiftLeft' || code === 'ShiftRight') {
+    KEY_BUTTON.classList.add('keyboard__button_big');
+  }
+
+  if (code === 'ControlLeft' || code === 'MetaLeft' || code === 'AltLeft' || code === 'AltRight' || code === 'ControlRight') {
+    KEY_BUTTON.classList.add('keyboard__button_middle');
+  }
+
+  if (code === 'Space') {
+    KEY_BUTTON.classList.add('keyboard__button_space');
+  }
+
+  KEY_BUTTON.setAttribute('id', code);
+  BOARD.append(KEY_BUTTON);
+
+  let engSpan;
+  let ruSpan;
+  const engShiftedSpan = appendLang(engShifted, 'engShifted', true);
+  const ruShiftedSpan = appendLang(ruShifted, 'ruShifted', true);
+
+  if (BOARD_STATE.lang === 'eng') {
+    engSpan = appendLang(eng, 'eng', false);
+    ruSpan = appendLang(ru, 'ru', true);
+  } else {
+    engSpan = appendLang(eng, 'eng', true);
+    ruSpan = appendLang(ru, 'ru', false);
+  }
+  KEY_BUTTON.append(engSpan);
+  KEY_BUTTON.append(ruSpan);
+  KEY_BUTTON.append(engShiftedSpan);
+  KEY_BUTTON.append(ruShiftedSpan);
+});
 
 const addTextareaValue = (value) => {
   TEXTAREA.focus();
@@ -533,6 +611,14 @@ document.addEventListener('keydown', (e) => {
   TEXTAREA.focus();
   const BOARD_KEY = document.querySelector(`#${code}`);
   BOARD_KEY.classList.add('keyboard__button_active');
+
+  if (code === 'CapsLock') {
+    BOARD_STATE.useIsCapsed = !BOARD_STATE.useIsCapsed;
+  }
+
+  if (code === 'ShiftLeft' || code === 'ShiftRight') {
+    BOARD_STATE.useIsShifted = true;
+  }
 
   if (code === 'ArrowUp') {
     e.preventDefault();
@@ -553,13 +639,42 @@ document.addEventListener('keydown', (e) => {
 });
 
 document.addEventListener('keyup', (e) => {
-  const BOARD_KEY = document.querySelector(`#${e.code}`);
+  const { code } = e;
+  const BOARD_KEY = document.querySelector(`#${code}`);
   BOARD_KEY.classList.remove('keyboard__button_active');
+
+  if (code === 'ShiftLeft' || code === 'ShiftRight') {
+    BOARD_STATE.useIsShifted = false;
+  }
 });
 
 BOARD.addEventListener('click', (e) => {
   const { target } = e;
-  if (target.classList.contains('keyboard__key')) {
+  if (target.textContent === 'CapsLock') {
+    BOARD_STATE.useIsCapsed = !BOARD_STATE.useIsCapsed;
+  } else if (target.textContent === 'Whitespace') {
+    addTextareaValue(' ');
+  } else if (target.textContent === 'Tab') {
+    addTextareaValue('  ');
+  } else if (target.textContent === 'Enter') {
+    addTextareaValue('\n');
+  } else if (target.textContent === 'Backspace') {
+    TEXTAREA.value = TEXTAREA.value.slice(0, TEXTAREA.value.length - 1);
+  } else if (target.classList.contains('keyboard__key') && target.textContent !== 'Alt' && target.textContent !== 'Ctrl' && target.textContent !== 'Win' && target.textContent !== 'Shift') {
     addTextareaValue(target.textContent);
+  }
+});
+
+BOARD.addEventListener('mousedown', (e) => {
+  const { target } = e;
+  if (target.textContent === 'Shift') {
+    BOARD_STATE.useIsShifted = true;
+  }
+});
+
+BOARD.addEventListener('mouseup', (e) => {
+  const { target } = e;
+  if (target.textContent === 'Shift') {
+    BOARD_STATE.useIsShifted = false;
   }
 });
