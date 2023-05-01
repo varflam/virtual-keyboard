@@ -464,7 +464,7 @@ const KEYS_ARRAY = [
 ];
 
 const BOARD_STATE = {
-  lang: 'ru',
+  lang: 'eng',
   isShifted: false,
 };
 
@@ -523,9 +523,33 @@ const appendKeys = () => {
 
 appendKeys();
 
+const addTextareaValue = (value) => {
+  TEXTAREA.focus();
+  TEXTAREA.value += value;
+};
+
 document.addEventListener('keydown', (e) => {
-  const BOARD_KEY = document.querySelector(`#${e.code}`);
+  const { code } = e;
+  TEXTAREA.focus();
+  const BOARD_KEY = document.querySelector(`#${code}`);
   BOARD_KEY.classList.add('keyboard__button_active');
+
+  if (code === 'ArrowUp') {
+    e.preventDefault();
+    addTextareaValue('▲');
+  }
+  if (code === 'ArrowDown') {
+    e.preventDefault();
+    addTextareaValue('▼');
+  }
+  if (code === 'ArrowRight') {
+    e.preventDefault();
+    addTextareaValue('►');
+  }
+  if (code === 'ArrowLeft') {
+    e.preventDefault();
+    addTextareaValue('◄');
+  }
 });
 
 document.addEventListener('keyup', (e) => {
@@ -536,7 +560,6 @@ document.addEventListener('keyup', (e) => {
 BOARD.addEventListener('click', (e) => {
   const { target } = e;
   if (target.classList.contains('keyboard__key')) {
-    TEXTAREA.focus();
-    TEXTAREA.value += target.textContent;
+    addTextareaValue(target.textContent);
   }
 });
