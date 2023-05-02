@@ -17,13 +17,14 @@
 }
 
 .keyboard__textarea {
-  width: 100%;
+  display: block;
+  width: 900px;
   height: 25vh;
   background: var(--dark);
   color: var(--light);
   border: 2px solid var(--light);
   border-radius: 5px;
-  margin-bottom: 20px;
+  margin: 0 auto 20px auto;
 }
 
 .keyboard__board {
