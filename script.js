@@ -16,7 +16,7 @@ BODY.append(BOARD);
 
 const SPECIFICATION = document.createElement('p');
 SPECIFICATION.classList.add('keyboard__spec');
-SPECIFICATION.textContent = 'Keyboard is created on Windows';
+SPECIFICATION.textContent = 'Keyboard is created on Windows. Change language - Ctrl + Alt';
 BODY.append(SPECIFICATION);
 
 const KEYS_ARRAY = [
@@ -474,20 +474,34 @@ const setShifted = (elems, shiftedElems) => {
 };
 
 const BOARD_STATE = {
-  get lang() {
-    return 'eng';
+  get useLang() {
+    return this.lang;
   },
-  set lang(lang) {
+  set useLang(lang) {
     this.lang = lang;
-    const KEYBOARD_RU_KEYS = document.querySelectorAll('.keyboard__ru');
-    KEYBOARD_RU_KEYS.forEach((ruKey) => {
-      ruKey.classList.toggle('hidden');
-    });
+    this.useIsShifted = false;
+    this.useIsCapsed = false;
+    if (this.lang === 'ru') {
+      const KEYBOARD_RU_KEYS = document.querySelectorAll('.keyboard__ru');
+      KEYBOARD_RU_KEYS.forEach((ruKey) => {
+        ruKey.classList.remove('hidden');
+      });
 
-    const KEYBOARD_ENG_KEYS = document.querySelectorAll('.keyboard__eng');
-    KEYBOARD_ENG_KEYS.forEach((engKey) => {
-      engKey.classList.toggle('hidden');
-    });
+      const KEYBOARD_ENG_KEYS = document.querySelectorAll('.keyboard__eng');
+      KEYBOARD_ENG_KEYS.forEach((engKey) => {
+        engKey.classList.add('hidden');
+      });
+    } else {
+      const KEYBOARD_RU_KEYS = document.querySelectorAll('.keyboard__ru');
+      KEYBOARD_RU_KEYS.forEach((ruKey) => {
+        ruKey.classList.add('hidden');
+      });
+
+      const KEYBOARD_ENG_KEYS = document.querySelectorAll('.keyboard__eng');
+      KEYBOARD_ENG_KEYS.forEach((engKey) => {
+        engKey.classList.remove('hidden');
+      });
+    }
   },
   get useIsShifted() {
     return this.isShifted;
@@ -545,17 +559,20 @@ const BOARD_STATE = {
     }
     setShifted(KEYBOARD_CAPSED_KEYS, KEYBOARD_KEYS);
   },
+  isCtrlPressed: false,
 };
+
+BOARD_STATE.useLang = localStorage.getItem('lang') ? localStorage.getItem('lang') : 'eng';
 
 const appendLang = (type, name, isHidden) => {
   const KEY = document.createElement('span');
-  if (isHidden) {
-    KEY.classList.add('hidden');
-  }
   KEY.classList.add(`keyboard__${name}`);
   KEY.classList.add('keyboard__key');
   if (!Number.isNaN(+type)) {
     KEY.classList.add('keyboard__key_num');
+  }
+  if (isHidden) {
+    KEY.classList.add('hidden');
   }
   KEY.textContent = type;
   return KEY;
@@ -613,11 +630,31 @@ document.addEventListener('keydown', (e) => {
   BOARD_KEY.classList.add('keyboard__button_active');
 
   if (code === 'CapsLock') {
-    BOARD_STATE.useIsCapsed = !BOARD_STATE.useIsCapsed;
+    if (!e.repeat) {
+      BOARD_STATE.useIsCapsed = !BOARD_STATE.useIsCapsed;
+    }
   }
 
   if (code === 'ShiftLeft' || code === 'ShiftRight') {
-    BOARD_STATE.useIsShifted = true;
+    if (!e.repeat) {
+      BOARD_STATE.useIsShifted = true;
+    }
+  }
+
+  if (code === 'ControlLeft' || code === 'ControlRight') {
+    BOARD_STATE.isCtrlPressed = true;
+  }
+
+  if (code === 'AltLeft') {
+    if (BOARD_STATE.isCtrlPressed === true) {
+      BOARD_STATE.useLang = BOARD_STATE.useLang === 'ru' ? 'eng' : 'ru';
+      localStorage.setItem('lang', BOARD_STATE.useLang);
+    }
+  }
+
+  if (code === 'Tab') {
+    e.preventDefault();
+    addTextareaValue('  ');
   }
 
   if (code === 'ArrowUp') {
@@ -645,6 +682,10 @@ document.addEventListener('keyup', (e) => {
 
   if (code === 'ShiftLeft' || code === 'ShiftRight') {
     BOARD_STATE.useIsShifted = false;
+  }
+
+  if (code === 'ControlLeft' || code === 'ControlRight') {
+    BOARD_STATE.isCtrlPressed = false;
   }
 });
 
